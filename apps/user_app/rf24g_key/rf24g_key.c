@@ -47,8 +47,8 @@ const u8 rf24g_key_type_28keys_table[][RF34G_KEY_EVENT_MAX + 1] = {
     {RF24G_KEY_VAL_R7C4, RF24G_28_KEY_EVENT_R7C4_PRESS, RF24G_28_KEY_EVENT_R7C4_CLICK, RF24G_28_KEY_EVENT_R7C4_LONG, RF24G_28_KEY_EVENT_R7C4_HOLD, RF24G_28_KEY_EVENT_R7C4_LOOSE},
 };
 
-volatile u8 rf24g_key_driver_event = 0; // 由key_driver_scan() 更新
-volatile u8 rf24g_key_driver_value = 0; // 由key_driver_scan() 更新
+volatile u8 rf24g_key_driver_event = 0; // 由 key_driver_scan() 更新
+volatile u8 rf24g_key_driver_value = 0; // 由 key_driver_scan() 更新
 
 static volatile u8 rf24g_rx_flag = 0;       // 是否收到了新的数据
 volatile rf24g_recv_info_t rf24g_recv_info; // 存放接收到的数据包
@@ -533,9 +533,9 @@ void rf24g_28keys_event_r3c3_click_handle(void)
     }
 
     color_t color_structure = {0};
-    color_structure.r = 138;
-    color_structure.g = 201;
-    color_structure.b = 151;
+    color_structure.r = 0;
+    color_structure.g = 255;
+    color_structure.b = 120;
     color_structure.w = 0;
     colorful_lights_set_static_mode(color_structure);
 }

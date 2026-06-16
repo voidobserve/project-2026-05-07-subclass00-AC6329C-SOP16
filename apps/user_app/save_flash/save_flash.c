@@ -52,6 +52,12 @@ void read_flash_device_status_init(void)
 #endif
         // printf("is not first power on\n");
     }
+
+    // 每次上电，默认打开七彩灯、流星灯、电机
+    fc_effect.on_off_flag = DEVICE_ON;
+    fc_effect.star_on_off = DEVICE_ON;
+    fc_effect.motor_on_off = DEVICE_ON;
+    fc_effect.base_ins.mode = fc_effect.base_ins.last_mode;
 }
 
 // 写入flash时间倒计时

@@ -248,6 +248,8 @@ void sound_handle(void)
         if (adc * fc_effect.music.s / 100 > adc_sum / adc_sum_n)
         {
             u32 adc_sum_avrg = adc_sum / adc_sum_n;
+            u32 map_val = 0;
+
             if (adc * fc_effect.colorful_lights_sensitivity / 100 > adc_sum_avrg)
             {
 
@@ -262,7 +264,13 @@ void sound_handle(void)
                 }
             }
 
-            if (adc * fc_effect.base_ins.sensitivity / 100 > adc_sum_avrg)
+            if (adc * fc_effect.base_ins.sensitivity / 100 > adc_sum_avrg) 
+            
+            /*
+                将原本的 0 ~ 100 数值对应的灵敏度映射到 50% ~ 100%
+            */
+            // map_val = (adc * fc_effect.base_ins.sensitivity / 100) * 50 / 100 + 50;
+            // if (map_val > adc_sum_avrg)
             {
                 if (fc_effect.on_off_flag == DEVICE_ON &&
                     MOTOR_MODE_MUSIC_RULATION == fc_effect.base_ins.mode)
